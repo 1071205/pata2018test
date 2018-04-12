@@ -1,0 +1,80 @@
+<header class="app-header navbar">
+    <button class="navbar-toggler d-lg-none" type="button" appMobileSidebarToggler>&#9776;</button>
+    <a class="navbar-brand" routerLink=""></a>
+    <button class="navbar-toggler d-md-down-none" type="button" appSidebarToggler>&#9776;</button>
+    <ul class="nav navbar-nav ml-auto">
+        <app-notifications></app-notifications>
+        <li class="nav-item dropdown mr-4" dropdown (onToggle)="toggled($event)">
+            <a href class="nav-link dropdown-toggle" dropdownToggle (click)="false">
+                <img src="assets/img/avatars/default.png" class="img-avatar" [alt]="user.email">
+                <span class="d-md-down-none">{{user.name}}</span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" *dropdownMenu aria-labelledby="simple-dropdown">
+                <div *ngIf="authService.isAuthenticated()">
+                    <button type="button" class="dropdown-item" (click)="logout()"><i class="fa fa-lock"></i>Terminar sessão</button>
+                </div>
+                <div *ngIf="!authService.isAuthenticated()">
+                    <a routerLink="/auth/login" class="dropdown-item"><i class="fa fa-sign-in"></i>Iniciar sessão</a>
+                </div>
+                <div *ngIf="!authService.isAuthenticated()">
+                    <a routerLink="/auth/registerResponsavelAnimais" class="dropdown-item"><i class="fa fa-user-plus"></i>Registar Responsavel de Animais</a>
+                </div>
+            </div>
+        </li>
+    </ul>
+</header>
+
+<div class="app-body">  
+    <div class="sidebar">
+        <nav class="sidebar-nav">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" routerLinkActive="active" routerLink="/home">
+                        <i class="fa fa-feed"></i> Home 
+                    </a>
+                </li>
+     
+                <li class="nav-item nav-dropdown" routerLinkActive="open" appNavDropdown *ngIf="authService.hasRole(['responsavelanimais', 'admin'])">
+                    <a class="nav-link nav-dropdown-toggle " appNavDropdownToggle>
+                        <i class="fa fa-sticky-note"></i> Animais
+                    </a>
+                    <ul class="nav-dropdown-items">
+                        <li class="nav-item" *ngIf="authService.hasRole(['admin', 'responsavelanimais'])">
+                            <a class="nav-link" routerLinkActive="active" routerLink="/animais" [routerLinkActiveOptions]="{exact: true}">
+                                <i class="fa fa-list"></i> Lista de Animais 
+                            </a>
+                        </li>
+                        <li class="nav-item" *ngIf="authService.hasRole(['responsavelanimais', 'admin'])">
+                            <a class="nav-link" routerLinkActive="active" routerLink="/animais/criar">
+                                <i class="fa fa-plus"></i> Criar Animal
+                            </a>
+                        </li>
+                        
+                    </ul>
+                </li>
+
+
+
+ 
+            </ul>
+        </nav>
+    </div>
+    
+    <!-- Main content -->
+    <main class="main">
+        
+        <!-- Breadcrumb -->
+        <ol class="breadcrumb">
+            <app-breadcrumbs></app-breadcrumbs>
+        </ol>
+        
+        <div class="container-fluid">
+            <router-outlet></router-outlet>
+        </div><!-- /.conainer-fluid -->
+    </main>
+</div>
+
+<footer class="app-footer">
+    PATA &copy; 2018 ISEP
+    <span class="float-right"> André Pedrosa - Powered by <a href="http://coreui.io">CoreUI</a></span>
+</footer>

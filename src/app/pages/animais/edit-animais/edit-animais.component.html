@@ -1,0 +1,58 @@
+<div class="card">
+
+      <div class="card-header">
+          Editar Animal
+      </div>
+      <div class="card-body">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                <form (ngSubmit)="updateAnimal()" #editForm="ngForm">
+                        <h1>Editar Animal</h1>
+                        <p class="text-muted">Id do Animal: {{animal._id}}</p>
+                        <div class="input-group mb-3">
+
+                            <input type="text" class="form-control" placeholder="Nome"  [value]=animal.nome name="nome" [(ngModel)]="nomeAnimal">
+                        </div>
+                        <div class="input-group mb-4">
+    
+                            <input type="text" class="form-control" placeholder="Tipo" value={{animal.tipo}} name="tipo" [(ngModel)]="tipoAnimal">
+                        </div>
+                        <div class="input-group mb-4">
+    
+                            <input type="text" class="form-control" placeholder="Raça" value={{animal.raca}} name="raca" [(ngModel)]="racaAnimal">
+                        </div>
+
+
+                        <div class="input-group mb-4">
+                            <select class="form-control" [(ngModel)]="generoAnimal" name="genero">
+                                <option *ngFor="let option of selectOptions" [value]="option">
+                                    {{option}}
+                                </option>
+                            </select>
+                        </div>
+
+
+                        <div class="input-group mb-4">
+    
+                            <input type="text" class="form-control"  name="idade" value={{animal.idade}} [(ngModel)]="idadeAnimal">
+                        </div>
+
+
+
+                        <div class="row">
+                            <div class="col-6">
+                                <button type="submit" class="btn btn-success" [disabled]="loading">
+                                    <i class="fa fa-spinner fa-spin" *ngIf="loading"></i>
+                                    <span class="fa fa-save" *ngIf="!loading"> Guardar</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+              </div>
+          </div>
+
+          
+
+      </div>
+
+</div>

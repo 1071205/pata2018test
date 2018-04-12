@@ -1,0 +1,122 @@
+<div class="app flex-row align-items-center">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-6">
+				<div class="card mx-4">
+					<div class="card-body p-4">
+						<h1>Registe-se</h1>
+						<p class="text-muted">Crie a sua conta</p>
+						<div class="input-group mb-3">
+							<span class="input-group-addon">
+								<i class="fa fa-envelope"></i>
+							</span>
+							<input type="text" class="form-control" placeholder="Email" name="email" [(ngModel)]="email">
+						</div>
+
+						<div class="input-group mb-3">
+							<span class="input-group-addon">
+								<i class="fa fa-user"></i>
+							</span>
+							<input type="text" class="form-control" placeholder="Nome" name="name" [(ngModel)]="name">
+						</div>
+
+						<div class="input-group mb-3">
+							<span class="input-group-addon">
+								<i class="fa fa-lock"></i>
+							</span>
+							<input type="password" class="form-control" placeholder="Password" name="password" [(ngModel)]="password">
+						</div>
+
+						<div class="input-group mb-4">
+							<span class="input-group-addon">
+								<i class="fa fa-lock"></i>
+							</span>
+							<input type="password" class="form-control" placeholder="Repita a password" name="password2" [(ngModel)]="passwordConfirmation">
+						</div>
+
+
+						<button type="submit" class="btn btn-block btn-success mb-3" (click)="registerResponsavelAnimais()" [disabled]="loading" *ngIf="!authService.isAuthenticated() && acordo">
+							<i class="fa fa-spinner fa-spin" *ngIf="loading"></i>
+							<i class="fa fa-save" *ngIf="!loading"></i>
+							<span *ngIf="!loading">Criar conta</span>
+						</button>
+
+						<a class="btn btn-primary btn-block" routerLink="/auth/login">
+							<i class="fa fa-external-link" aria-hidden="true"></i>
+							Já tenho conta. Iniciar sessão
+						</a>
+
+						<hr>
+
+						<div class="input-group mb-3" *ngIf="!authService.isAuthenticated()">
+							<textarea readonly style="text-align:left;color:red" class="form-control" id="condicoes" rows="8">1. INFORMAÇÕES GERAIS
+								Os presentes Termos e Condições de Utilização e a Política de Privacidade regem a utilização deste website.
+								O acesso e a utilização deste website é da inteira responsabilidade do utilizador, que está sujeito à aceitação dos presentes termos e condições de utilização, da política de privacidade e tratamento de dados aqui transcritos. A utilização deste website e os utilizadores são regidos pela legislação portuguesa aplicável.
+								A SIMDOCTOR reserva-se o direito de alterar os presentes termos e condições de utilização, ou rever a política de privacidade e tratamento de dados nos presentes identificados sempre que o entenda, a qualquer momento, com ou sem aviso prévio. Clique nos "Termos e Condições de Utilização" localizados no Website da SIMDOCTOR para consultar a sua versão atual. A versão mais atual dos Termos e Condições de Utilização substitui todas as versões anteriores.
+								Se não concordar com estes Termos e Condições de Utilização, não utilize o website. Estes Termos e Condições de Utilização e a Política de Privacidade constituem um contrato entre o utilizador e a SIMDOCTOR e aplicam-se à utilização do website. É da responsabilidade do utilizador ler e rever os mesmos sempre que aceda ao website, de forma a tomar conhecimento de quaisquer alterações efetuadas, porquanto os mesmos afetam os seus direitos.
+								2. DIREITOS DE PROPRIEDADE INTELECTUAL
+								Os conteúdos constantes do website, incluindo, sem limitar, as imagens, textos, software, fotografias, som, música, vídeos, recursos interativos e afins ("Conteúdo"), as marcas e logótipos ("Marcas"), ou quaisquer outros direitos de propriedade industrial ou intelectual, constantes do mesmo, são propriedade da SIMDOCTOR, sendo expressamente proibida a sua utilização por terceiros não autorizados. O conteúdo do website é facultado apenas para informação e utilização pessoal, não podendo ser usado, copiado, reproduzido, distribuído, transmitido, difundido, vendido, licenciado ou, de qualquer outra forma, explorado para qualquer outro fim sem o consentimento prévio e por escrito dos respetivos proprietários. O utilizador declara não utilizar, desativar ou interferir com recursos relacionados com a segurança do Website e da Aplicação.
+								O utilizador poderá no entanto imprimir material contido neste website, desde que o mesmo não sofra alterações, seja para uso pessoal e não-comercial, e mantenha a indicação da fonte e dos direitos de autor, e desde que qualquer outra indicação de propriedade não seja removida.
+								Nada neste website deverá ser interpretado como concedendo qualquer tipo de licença ou outra autorização de uso aos seus utilizadores.
+								O website pode conter imagens ou outros materiais cujos direitos de autor pertencem a terceiros, como sejam fornecedores ou outras entidades que contribuam para a sua criação ou manutenção (como por exemplo, fotos de banco de imagens).
+								Embora os dados pessoais fornecidos à SIMDOCTOR estejam ao abrigo do definido na política de privacidade e tratamento de dados constante dos presentes termos e condições de utilização, qualquer informação ou outro conteúdo que o utilizador transmita através deste website, seja através de correio eletrónico, envio de ficheiros ou de outro modo, será considerado como não confidencial e não reservado.
+								3. CONTEÚDOS E GARANTIAS
+								O utilizador concorda que a utilização do website deve ser feita por sua própria conta e risco. Em toda a extensão permitida pela lei, a SIMDOCTOR, está isenta de quaisquer garantias, expressas ou implícitas, em relação à utilização do website. A SIMDOCTOR não assegura a correção ou o rigor dos conteúdos disponibilizados nos seus websites, e não assume qualquer responsabilidade ou obrigação por quaisquer (i) erros ou conteúdos pouco precisos, (ii) danos pessoais ou danos à propriedade, de qualquer natureza, resultantes do acesso e utilização dos website e aplicação, (iii) acessos não autorizados ou utilização dos nossos servidores seguros e/ou de informação pessoal e/ou financeira armazenada neles, (iv) interrupções ou cessação da transmissão de ou para a nossa página web, (iv) erros, vírus, vírus trojan ou similares que possam ser transmitidos para ou através do website, e/ou (v) erros ou omissões nos conteúdos ou qualquer perda ou dano ocorrido como resultado da utilização de conteúdos publicados, enviados, transmitidos ou disponibilizados através do website (vi) indisponibilidade ou qualquer dificuldade ou incapacidade de descarregar ou aceder ao conteúdo ou qualquer outra falha no sistema de comunicação que possam resultar na indisponibilidade do website. A SIMDOCTOR não será responsável por qualquer assistência ou manutenção do website.
+								A SIMDOCTOR reserva-se o direito de realizar alterações e correções, alterar o nome, suspender ou encerrar 
+								A SIMDOCTOR não assume responsabilidade ou obrigação por conteúdo transmitido entre os utilizadores ou entre estes e quaisquer terceiros fora deste website.
+								4. RESPONSABILIDADE, USO E RISCO
+								Na medida em que tal seja permitido por lei, a SIMDOCTOR e todos os seus representantes legais, diretores, empregados ou outros que por qualquer forma atuem em nome e representação da SIMDOCTOR, bem como qualquer outra parte envolvida na criação, produção, manutenção ou implementação deste website, não serão responsáveis perante qualquer utilizador do website, por qualquer possível dano, prejuízo ou lesão (incluindo qualquer perda de lucro cessante e danos morais, qualquer perda indireta, acidental ou consequencial) que advenham da utilização correta ou incorreta deste website e seu conteúdo, do acesso ao computador, telemóvel /smartphone ou tablet ou sistema informático do utilizador por terceiros, ou de quaisquer vírus, etc.
+								Este website contém links para sites de terceiros. Estes links são fornecidos unicamente para conveniência e mais fácil acesso pelo utilizador. A existência dos referidos links não significa que a SIMDOCTOR tenha quaisquer direitos sobre os conteúdos dos referidos sites. A SIMDOCTOR não verifica o seu conteúdo e não é responsável pelo conteúdo de qualquer desses sites ou por qualquer facto decorrente da sua utilização ou visualização, não verificando ainda que os mesmos se encontram livres de quaisquer vírus ou outros itens que possam causar danos ao utilizador. O acesso e visita a qualquer desses sites de terceiros são efetuados por risco integral do utilizador, sendo o utilizador responsável por qualquer utilização e/ou pelas consequências daí resultantes.
+								Está expressamente proibida a utilização do website para fins ilegais ou quaisquer outros fins que possam ser considerados indignos da imagem da SIMDOCTOR. A usurpação, contrafação, aproveitamento do conteúdo usurpado ou contrafeito, a identificação ilegítima e a concorrência desleal são puníveis criminalmente.
+								É também proibido ao utilizador criar ou introduzir neste website qualquer tipo de vírus ou programa que o danifique ou contamine ou aconselhe terceiros a fazê-lo. A prática da referida infração é punida nos termos da lei.
+								O website é controlado e oferecido pela SIMDOCTOR a partir das suas instalações em Portugal. A SIMDOCTOR não assegura que o website esteja disponível para utilização em outros locais. Quem aceder ou utilizar o website a partir de outras jurisdições fá-lo por sua própria iniciativa e é responsável pelo cumprimento das leis locais.
+								5. POLÍTICA DE PRIVACIDADE E TRATAMENTO DE DADOS
+								A SIMDOCTOR é a responsável pelo tratamento da informação pessoal respeitante aos utilizadores diretamente recolhida através de diversos meios. A SIMDOCTOR compromete-se a pôr em prática as medidas técnicas e organizativas adequadas para proteger os dados pessoais dos seus utilizadores contra a sua destruição, acidental, ou ilícita, a perda acidental, a alteração, a difusão ou o acesso não autorizado.
+								Considera-se aplicado um nível de segurança adequado em relação aos riscos que o tratamento apresenta face à natureza dos dados a proteger.
+								A SIMDOCTOR pode, deste modo, recolher e guardar informação que voluntariamente e com consentimento lhe foi transmitida, incluindo, entre outra, informação pessoal individualizada, como nome, morada, endereço de correio eletrónico e número de telefone. A SIMDOCTOR antes do tratamento e recolha dos dados pessoais diretamente junto dos respetivos titulares, prestará todas as informações necessárias relativas a esse tratamento e recolherá a respetiva autorização para os efeitos.
+								Os dados fornecidos pelos utilizadores serão tratados pela SIMDOCTOR em conformidade com os preceitos legalmente aplicáveis, sendo nomeadamente:
+								a) Tratados de forma lícita e com respeito pelo princípio da boa-fé;
+								b) Recolhidos para finalidades determinadas, explícitas e legítimas, não podendo ser posteriormente tratados;
+								c) Exatos e, se necessário, atualizados, devendo ser tomadas as medidas adequadas para assegurar que sejam apagados ou retificados os dados inexatos ou incompletos, tendo em conta as finalidades para que foram recolhidos ou para que são tratados posteriormente;
+								d) Conservados de forma a permitir a identificação dos seus titulares apenas durante o período necessário para a prossecução das finalidades de recolha ou do tratamento posterior. Os dados solicitados no website não são considerados, à luz da legislação aplicável como dados sensíveis, não sendo, por conseguinte, aplicáveis as inerentes restrições.
+								Os dados recolhidos poderão ser transmitidos a outras sociedades do Grupo SIMDOCTOR, sedeadas em Portugal ou no estrangeiro, para a realização de quaisquer atividades incluídas na iniciativa do website. A recolha e tratamento de dados pessoais será efetuada de acordo com a lei portuguesa, aplicável e vigente, e todas as autorizações que, para o efeito, se revelem necessárias, serão previamente obtidas junto da comissão nacional de proteção de dados. Nos termos da lei, a SIMDOCTOR adotou as medidas necessárias para assegurar que os dados facultados sejam protegidos contra o acesso ou utilização por parte de terceiros não autorizados. No entanto, a SIMDOCTOR alerta para o risco residual de acesso não autorizado através da internet.
+								Existem outros tipos de informações, neste caso não pessoais e não individualizadas, que são registados apenas para ajudar a manter o website útil e garantir uma boa experiência de navegação para quem o visita. São as informações estatísticas que, normalmente e por definição, são registadas através da janela de navegação na internet ("browser") como sejam: o endereço na internet do website que trouxe o utilizador diretamente ao website da SIMDOCTOR, páginas do website mais visitadas, tipo de browser, sistema operativo, etc.
+								6. CAPACIDADE PARA ACEITAR OS TERMOS E CONDIÇÕES DE UTILIZAÇÃO
+								O utilizador confirma ser maior de 18 anos de idade ou estar na posse de autorização legal dos pais ou de tutores e ser plenamente capaz de consentir e aceitar os termos, condições, obrigações, afirmações, representações e garantias descritas nestes Termos e Condições de Utilização, e respeitar e cumprir os mesmos. Se tiver menos de 18 anos de idade e não possuir uma autorização legal dos pais ou representantes legais, não utilize o website.
+								7. SEGURANÇA E UTILIZAÇÃO DA INFORMAÇÃO
+								A SIMDOCTOR compromete-se a assegurar a privacidade dos utilizadores registados. A SIMDOCTOR não vende nem aluga a terceiros qualquer dado pessoal enviado pelos utilizadores registados.
+								Apesar dos esforços da SIMDOCTOR para proteger os seus dados pessoais, uma vez que estes são recolhidos através de uma rede aberta - a internet só poderão os mesmos circular na rede sem condições de segurança, correndo o risco de serem vistos e utilizados por terceiros não autorizados.
+								8. CONSERVAÇÃO DE INFORMAÇÃO PESSOAL
+								Após a recolha de informação de dados pessoais individualizada, que voluntariamente lhe foi transmitida, a SIMDOCTOR procederá à sua conservação e manutenção até instruções em contrário, ou até que seja exigível por lei. A conservação dessa informação permite que a SIMDOCTOR continue a fornecer serviços personalizados sem interrupção.
+								9. TRANSMISSÃO
+								Estes Termos e Condições de Utilização e quaisquer direitos e licenças pelo presente concedidos não podem ser transferidos ou cedidos pelo utilizador, podendo, no entanto, ser atribuídos pela SIMDOCTOR a terceiros, sem qualquer restrição.
+								10. LEI APLICÁVEL
+								Os presentes Termos e Condições de Utilização e a Política de Privacidade reger-se-ão pelo direito português e serão interpretados de acordo com a lei portuguesa. A versão portuguesa dos presentes Termos e Condições de Utilização e da Política de Privacidade prevalecerão sobre quaisquer traduções para outro idioma, se as houver. A nulidade de alguma das disposições ter-se-á por suprimida, permanecendo as restantes disposições do mesmo integralmente em vigor e produzindo os seus efeitos.
+								11. Os seus dados serão eliminados se não fizer login num periodo de 5 anos.
+							</textarea>
+						</div>
+
+
+						<div class="input-group mb-4" *ngIf="!authService.isAuthenticated()">
+							<div class="col-sm-offset-2 col-sm-10">
+								<div class="form-check">
+									<input type="checkbox" id="checkAcordo" [(ngModel)]="acordo">
+									<label class="form-check-label" for="checkAcordo">Aceito o acordo</label>
+								</div>
+							</div>
+						</div>
+
+						<div *ngIf="errors.length">
+							<h2>Erros</h2>
+							<ul class="bg-danger">
+								<li *ngFor="let error of errors">
+									{{error}}
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

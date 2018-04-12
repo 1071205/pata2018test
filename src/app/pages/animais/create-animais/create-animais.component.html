@@ -1,0 +1,57 @@
+<div class="card">
+  <form (ngSubmit)="create()">
+      <div class="card-header">
+          Criar Animal
+      </div>
+      <div class="card-body">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                <form (ngSubmit)="newAnimal()">
+                        <h1>Registar Animal</h1>
+                        <p class="text-muted">Registe um novo animal</p>
+                        <div class="input-group mb-3">
+
+                            <input type="text" class="form-control" placeholder="Nome do animal" name="nome" [(ngModel)]="nomeAnimal">
+                        </div>
+                        <div class="input-group mb-4">
+    
+                            <input type="text" class="form-control" placeholder="Tipo" name="tipo" [(ngModel)]="tipoAnimal">
+                        </div>
+                        <div class="input-group mb-4">
+    
+                            <input type="text" class="form-control" placeholder="Raça" name="raca" [(ngModel)]="racaAnimal">
+                        </div>
+
+
+                        <div class="input-group mb-4">
+                            <select class="form-control" name="genero" [(ngModel)]="generoAnimal">
+                                <option value="F">Femea</option>
+                                <option value="M">Macho</option>
+                            </select>
+                        </div>
+
+
+                        <div class="input-group mb-4">
+    
+                            <input type="text" class="form-control" placeholder="Idade" name="idade" [(ngModel)]="idadeAnimal">
+                        </div>
+
+
+
+                        <div class="row">
+                            <div class="col-6">
+                                <button type="submit" class="btn btn-success" [disabled]="loading">
+                                    <i class="fa fa-spinner fa-spin" *ngIf="loading"></i>
+                                    <span class="fa fa-save" *ngIf="!loading"> Guardar</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+              </div>
+          </div>
+
+          
+
+      </div>
+  </form>
+</div>

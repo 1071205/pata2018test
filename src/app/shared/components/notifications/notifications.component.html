@@ -1,0 +1,12 @@
+<li class="nav-item" dropdown (onShown)="toggled($event)">
+    <button type="button" class="nav-link" dropdownToggle>
+        <i class="fa fa-bell-o"></i>
+        <span class="badge badge-pill badge-danger" *ngIf="unread > 0">{{unread}}</span>
+    </button>
+    <div class="dropdown-menu dropdown-menu-right" *dropdownMenu aria-labelledby="notifications-dropdown">
+        <div class="dropdown-item" *ngIf="notifications.length == 0"><em>Não tem notificações</em></div>
+        <button type="button" class="dropdown-item" *ngFor="let notification of notifications; let i = index" (click)="handleClick(i)">
+            {{notification.text}}
+        </button>
+    </div>
+</li>

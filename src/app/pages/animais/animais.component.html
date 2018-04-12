@@ -1,0 +1,64 @@
+<div class="card">
+    <div class="card-header text-center">
+        <h3>Animais</h3>
+    </div>
+    <div class="card-body">
+        <div class="form-group row mb-3">
+            <label class="col-2 col-form-label">
+                Procurar por animais:
+            </label>
+            <div class="col-10">
+                <input type="text" name="name" class="form-control" [(ngModel)]="search">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <table class="table table-bordered table-striped table-responsive">
+                    <thead class="thead-inverse">
+                        <tr>
+                            <th>Id</th>
+                            <th>Nome</th>
+                            <th>Tipo</th>
+                            <th>Raca</th>
+                            <th>Genero</th>
+                            <th>Idade</th>
+                            <th>Ativo</th>
+                            <th>Responsavel</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngIf="animais.length == 0 && !loading">
+                            <td colspan="5" class="text-center">Não existem animais</td>
+                        </tr>
+                        <tr *ngIf="loading">
+                            <td colspan="5" class="text-center">
+                                <i class="fa fa-spin fa-spinner" aria-hidden="true"></i>
+                            </td>
+                        </tr>
+                        <tr *ngFor="let animal of animais | nameSearchFilter: '_id':search">
+                            <td>{{animal._id}}</td>
+                            <td>{{animal.nome}}</td>
+                            <td>{{animal.tipo}}</td>
+                            <td>{{animal.raca}}</td>
+                            <td>{{animal.genero}}</td>
+                            <td>{{animal.idade}}</td>
+                            <td>{{animal.ativo}}</td>
+                            <td>{{animal.responsavel}}</td>
+                            <td>
+                                <button class="btn btn-info btn-sm" (click)="showCommentModal(animal.id)" title="Detalhe animal">
+                                    <i class="fa fa-eye"></i>
+                                </button>
+                                <a [routerLink]="['/animais', animal._id, 'editar']"><button class="btn btn-info btn-sm" title="Editar animal">
+                                    <i class="fa fa-edit"></i>
+                                </button></a>
+                                <button class="btn btn-danger btn-sm" (click)="showCommentModal(animal.id)" title="Eliminar animal">
+                                    <i class="fa fa-remove"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
